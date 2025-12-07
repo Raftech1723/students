@@ -1,11 +1,9 @@
 package es.trapasoft.student.service;
 
+import java.util.List;
+
 import es.trapasoft.student.entity.Course;
 import es.trapasoft.student.repository.ICourseRepository;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.springframework.data.domain.Sort;
 
 public class CourseService implements ICourseService {
 
@@ -14,7 +12,7 @@ public class CourseService implements ICourseService {
     public CourseService(ICourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
-    
+
     @Override
     public List<Course> getAllCourses() {
         return courseRepository.findAllSortByName();
@@ -24,7 +22,7 @@ public class CourseService implements ICourseService {
     public List<Course> getCourseByName(String name) {
         return courseRepository.findByTitleContaining(name);
     }
-    
+
     @Override
     public List<Course> getCourseByFee(double fee) {
         return courseRepository.findByFeeLessThan(fee);
@@ -45,10 +43,10 @@ public class CourseService implements ICourseService {
     public void deleteCourseById(Long id) {
         courseRepository.deleteById(id);
     }
-    
+
     @Override
     public Course updateCourse(Course course) {
         return courseRepository.save(course);
     }
-    
+
 }

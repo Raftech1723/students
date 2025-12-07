@@ -1,19 +1,21 @@
 package es.trapasoft.student.service;
 
-import es.trapasoft.student.entity.Student;
 import java.util.List;
+
 import org.springframework.stereotype.Service;
+
+import es.trapasoft.student.entity.Student;
 import es.trapasoft.student.repository.IStudentRepository;
 
 @Service
 public class StudentService implements IStudentService {
-    
+
     private IStudentRepository studentRepository;
 
     public StudentService(IStudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
- 
+
     @Override
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
@@ -43,5 +45,5 @@ public class StudentService implements IStudentService {
     public List<Student> getStudentByName(String name) {
         return studentRepository.findByNameContaining(name);
     }
-    
+
 }

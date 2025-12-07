@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,17 +20,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name="courses")
 public class Course implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String name;
-    
+
     private int modules;
-    
+
     private double credits;
-    
+
     private double fee;
 
     public Course() {
@@ -41,8 +42,8 @@ public class Course implements Serializable {
         this.credits = credits;
         this.fee = fee;
     }
-    
-    
+
+
     @ManyToMany(mappedBy="courses", fetch=FetchType.LAZY)
     private Set<Student> students = new HashSet<>();
 
@@ -107,17 +108,11 @@ public class Course implements Serializable {
         if (this == obj) {
             return true;
         }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
+        if ((obj == null) || (getClass() != obj.getClass())) {
             return false;
         }
         final Course other = (Course) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.name, other.name) || !Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -127,12 +122,12 @@ public class Course implements Serializable {
     public String toString() {
         return "Course{" + "name=" + name + ", fee=" + fee + '}';
     }
-    
-    
-    
 
-    
- 
-    
-    
+
+
+
+
+
+
+
 }

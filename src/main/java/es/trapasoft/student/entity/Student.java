@@ -2,6 +2,7 @@ package es.trapasoft.student.entity;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,21 +22,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name="students")
 public class Student {
-    
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name="first_name", nullable=false)
     private String firstName;
-    
+
     @Column(name="last_name")
     private String lastName;
-    
+
     @Column(name="email")
-    private String email;    
-    
-    
+    private String email;
+
+
     // relacion muchos a muchos con cursos
     @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
     @JoinTable(name="students_courses",
@@ -48,8 +49,8 @@ public class Student {
             nullable=false, updatable=false)
         })
     private Set<Course> courses = new HashSet<>();
-    
-    
+
+
     public Student() {
     }
 
@@ -99,11 +100,11 @@ public class Student {
         this.courses = courses;
     }
 
-    
+
     @Override
     public String toString() {
         return "Student{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
     }
-    
-    
+
+
 }

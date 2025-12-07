@@ -8,9 +8,9 @@ services:
     startCommand: java -jar target/student-0.0.1-SNAPSHOT.jar
     envVars:
       - key: MYSQLHOST
-        value: mysql.railway.internal
+        value: metro.proxy.rlwy.net
       - key: MYSQLPORT
-        value: 57902
+        value: 10422
       - key: MYSQLDATABASE
         value: railway
       - key: MYSQLUSER
